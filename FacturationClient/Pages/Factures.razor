@@ -1,0 +1,44 @@
+﻿@page "/factures"
+
+@using FacturationClient
+
+@inject Manager manager;
+
+<h1>Liste des factures</h1>
+
+<p>This component demonstrates la puissance des factures.</p>
+
+@if (manager.listFactures == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Noms de clients</th>
+            <th>Numéro de facture</th>
+            <th>Date d'émission</th>
+            <th>Date règlement attendu</th>
+            <th>Montant dû</th>
+            <th>Montant rêglé</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var facture in manager.listFactures)
+        {
+            <tr>
+                <td>@facture.nomClient</td>
+                <th>@facture.numFacture</th>
+                <th>@facture.dateEmission.ToShortDateString()</th>
+                <th>@facture.dateReglementAttendu.ToShortDateString()</th>
+                <th>@facture.montantDu.ToString("0.00 €")</th>
+                <th>@facture.montantRegle.ToString("0.00 €")</th>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

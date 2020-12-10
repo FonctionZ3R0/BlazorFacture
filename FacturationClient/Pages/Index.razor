@@ -1,0 +1,8 @@
+﻿@page "/"
+@inject Manager manager;
+
+<h1>DES FACTURES !</h1>
+
+<h2>Total à payer : <strong>@manager.totalAPayer.ToString("0.00 €")</strong></h2>
+
+<h2>Total payé : <strong>@manager.totalPaye.ToString("0.00 €")</strong></h2>
